@@ -18,6 +18,18 @@ function createSlug(str) {
     .replace(/\s+/g, "-");
 }
 
+const posts = [
+  { id: 1, title: "Post di esempio uno" },
+  { id: 2, title: "Secondo articolo" },
+  { id: 3, title: "Ultime notizie" }
+].map(post => ({
+  ...post,
+  slug: createSlug(post.title)
+}));
+
+function findPostById(posts, id) {
+  return posts.find(post => post.id === id);
+}
 
 function average(numbers){
     const somma = numbers.reduce((acc, val) => acc + val, 0);
@@ -34,5 +46,6 @@ module.exports = {
     createSlug,
     average,
     isPalindrome,
-
+    findPostById, 
+    posts,
 }
