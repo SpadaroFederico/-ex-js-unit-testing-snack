@@ -6,9 +6,12 @@ function getInitials(fullName){
     .join()
 }
 
-function createSlug(str){
-    return str
+function createSlug(input){
+    return input
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
+    .replace(/\s+/g, '-')
 }
 
 function average(numbers){
@@ -21,5 +24,5 @@ module.exports = {
     getInitials,
     createSlug,
     average,
-    
+
 }
